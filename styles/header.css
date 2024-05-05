@@ -37,34 +37,16 @@
     margin-right: 20px;
 }
 
-.tooltip-container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-}
-
-.tooltip {
-    background-color: rgba(96, 96, 96, 0.9);
-    color: white;
-    font-size: 12px;
-    padding: 8px;
-    border-radius: 2px;
-    position: absolute;
-    bottom: -50px;
-    opacity: 0;
-    transition: opacity 0.15s;
-    pointer-events: none;
-    white-space: nowrap;
-}
-
 .hamburger-menu {
     height: 24px;
     margin-left: 24px;
     margin-right: 24px;
+    cursor: pointer;
 }
 
 .youtube-logo {
     height: 20px;
+    cursor: pointer;
 }
 
 .search {
@@ -76,6 +58,11 @@
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
     box-shadow: inset 0px 1px 2px #eeeeee;
+    z-index: 100;
+}
+
+.search:focus {
+    outline: 1px solid rgb(27, 170, 218);
 }
 
 .search::placeholder {
@@ -94,6 +81,8 @@
     cursor: pointer;
     margin-right: 10px;
     align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 .search-icon {
@@ -108,6 +97,8 @@
     border-radius: 100%;
     cursor: pointer;
     align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 .mic-icon {
@@ -115,16 +106,32 @@
     width: 24px;
 }
 
+.upload-container,
+.youtube-apps-container,
+.notification-icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-right: 10px;
+}
+
+.upload-container {
+    margin-right: 20px;
+}
+
 .upload-icon {
     height: 24px;
     width: 24px;
     cursor: pointer;
+    position: absolute;
 }
 
 .youtube-apps-icon {
     height: 24px;
     width: 24px;
     cursor: pointer;
+    position: absolute;
 }
 
 .notifications-icon {
@@ -140,10 +147,6 @@
     cursor: pointer;
 }
 
-.notification-icon-div {
-    position: relative;
-}
-
 .notification-number {
     background-color: rgb(190, 0, 0);
     color: white;
@@ -155,4 +158,41 @@
     top: -3px;
     right: -7px;
     border: 2px solid white;
+}
+
+.tooltip {
+    background-color: rgba(96, 96, 96, 0.9);
+    color: white;
+    font-size: 12px;
+    padding: 8px;
+    border-radius: 2px;
+    position: absolute;
+    bottom: -30px;
+    opacity: 0;
+    transition: opacity 0.15s;
+    pointer-events: none; /* to disable tool tip display while hovering over tool tip */
+    white-space: nowrap;
+    z-index: 500;
+}
+
+.upload-container .tooltip,
+.youtube-apps-container .tooltip {
+    bottom: -50px;
+}
+
+.notification-icon-container .tooltip {
+    bottom: -38px;
+}
+
+.search-button:hover .tooltip,
+.mic:hover .tooltip,
+.upload-container:hover .tooltip,
+.youtube-apps-container:hover .tooltip,
+.notification-icon-container:hover .tooltip {
+    opacity: 1;
+}
+
+.search-button:hover,
+.mic:hover {
+    background-color: rgb(226, 226, 226);
 }
